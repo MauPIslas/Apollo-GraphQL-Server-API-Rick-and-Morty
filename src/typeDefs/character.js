@@ -1,4 +1,5 @@
 import { gql } from 'apollo-server-express'
+// import Episode from './episode'
 
 export default gql`
     extend type Query {
@@ -31,7 +32,7 @@ export default gql`
         origin: String,
         location: String,
         image: String,
-        episode: [String!]!,
+        episode: [Episode!]!,
         created: String
     }
 `

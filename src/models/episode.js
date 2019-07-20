@@ -1,6 +1,5 @@
 import mongoose from 'mongoose'
 
-import seedEpisodes from '../../seeders/episodes.json'
 
 const episodeSchema = new mongoose.Schema({
   name: String,
@@ -13,9 +12,5 @@ const episodeSchema = new mongoose.Schema({
 })
 
 const Episode = mongoose.model('Episode', episodeSchema)
-
-Episode.find({}).deleteMany().then(() => {
-  Episode.create(seedEpisodes)
-})
 
 export default Episode

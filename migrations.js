@@ -9,18 +9,23 @@ import seedLocations from './seeders/locations.json'
   try {
     await mongoose.connect(DB_HOST, { useNewUrlParser: true })
 
-    Episode.find({}).deleteMany()
-      .then(() => { Episode.create(seedEpisodes) })
+    Episode.deleteMany()
+      .then(() => { Episode.insertMany(seedEpisodes) })
       .catch(e => console.log(e))
 
-    Character.find({}).deleteMany()
-      .then(() => { Character.create(seedCharacters) })
+    Character.deleteMany()
+      .then(() => { Character.insertMany(seedCharacters) })
       .catch(e => console.log(e))
 
-    Location.find({}).deleteMany()
-      .then(() => { Location.create(seedLocations) })
+    Location.deleteMany()
+      .then(() => { Location.insertMany(seedLocations) })
       .catch(e => console.log(e))
+
+    setTimeout(function () {
+      console.log('Closing connection with the database')
+      mongoose.connection.close()
+    }, 3000)
   } catch (e) {
     console.error(e)
   }
-})().catch(e => console.log(e))
+})().then(() => { console.log('done') }).catch(e => console.log(e))
