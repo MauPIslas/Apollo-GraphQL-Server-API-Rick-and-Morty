@@ -8,7 +8,6 @@ import { APP_PORT, DB_HOST } from './config'
 (async () => {
   try {
     await mongoose.connect(DB_HOST, { useNewUrlParser: true })
-    console.log(APP_PORT)
     const app = express()
     app.disable('x-powerede-by')
 

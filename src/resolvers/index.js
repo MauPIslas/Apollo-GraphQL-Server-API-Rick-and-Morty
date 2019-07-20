@@ -1,5 +1,5 @@
-import user from './user'
+import episode from './episode'
 
 export default [
-  user
+  episode
 ]

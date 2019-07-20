@@ -1,7 +1,7 @@
 import root from './root'
-import user from './user'
+import episode from './episode'
 
 export default [
   root,
-  user
+  episode
 ]
