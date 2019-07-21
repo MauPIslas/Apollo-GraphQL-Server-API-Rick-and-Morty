@@ -18,5 +18,10 @@ export default {
     createLocation: async (root, args, context, info) => {
       return Location.create(args)
     }
+  },
+  Location: {
+    residents: async (location, args, context, info) => {
+      return (await location.populate('residents').execPopulate()).residents
+    }
   }
 }

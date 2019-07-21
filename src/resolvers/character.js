@@ -18,5 +18,10 @@ export default {
     createCharacter: async (root, args, context, info) => {
       return Character.create(args)
     }
+  },
+  Character: {
+    episode: async (character, args, context, info) => {
+      return (await character.populate('episode').execPopulate()).episode
+    }
   }
 }

@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 
 const characterSchema = new mongoose.Schema({
   name: String,
@@ -9,7 +9,10 @@ const characterSchema = new mongoose.Schema({
   origin: String,
   location: String,
   image: String,
-  episode: [String],
+  episode: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Episode'
+  }],
   created: String
 }, {
   timestamps: true

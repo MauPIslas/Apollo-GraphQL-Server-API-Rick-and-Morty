@@ -9,7 +9,7 @@ export default gql`
 
     extend type Mutation {
         createCharacter(
-          id: String!
+          id: String!,
           name: String!,
           status: String,
           species: String,
@@ -18,7 +18,7 @@ export default gql`
           origin: String,
           location: String,
           image: String!,
-          episode: [String!]!,
+          episode: [String!]!
         ): Character!
     }
     

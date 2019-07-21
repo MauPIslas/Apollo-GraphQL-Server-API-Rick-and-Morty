@@ -7,7 +7,12 @@ export default gql`
     }
 
     extend type Mutation {
-        createEpisode(name: String!, air_date: String!, episode: String!, characters: [String]! ): Episode!
+        createEpisode(
+            name: String!, 
+            air_date: String!, 
+            episode: String!, 
+            characters: [String]!
+            ): Episode!
     }
     
     type Episode {
@@ -15,7 +20,7 @@ export default gql`
         name: String!
         air_date: String!
         episode: String!
-        characters: [String]!
+        characters: [Character!]!
         created: String
     }
 `

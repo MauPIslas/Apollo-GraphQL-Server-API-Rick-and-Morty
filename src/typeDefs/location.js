@@ -22,7 +22,7 @@ export default gql`
         name: String,
         type: String,
         dimension: String,
-        residents: [String],
+        residents: [Character]!,
         created: String
     }
 `

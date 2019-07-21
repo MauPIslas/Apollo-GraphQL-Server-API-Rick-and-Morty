@@ -1,10 +1,13 @@
-import mongoose from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 
 const locationSchema = new mongoose.Schema({
   name: String,
   type: String,
   dimension: String,
-  residents: [String],
+  residents: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Character'
+  }],
   created: String
 }, {
   timestamps: true
