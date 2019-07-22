@@ -3,7 +3,7 @@ import { gql } from 'apollo-server-express'
 export default gql`
     extend type Query {
         episode(id: ID!): Episode
-        episodes: [Episode!]!
+        episodes(page: Int): Episodes!
     }
 
     extend type Mutation {
@@ -13,6 +13,10 @@ export default gql`
             episode: String!, 
             characters: [String]!
             ): Episode!
+    }
+    type Episodes {
+        info: Info
+        results: [Episode]!
     }
     
     type Episode {

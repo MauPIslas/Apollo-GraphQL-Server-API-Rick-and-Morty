@@ -1,10 +1,9 @@
 import { gql } from 'apollo-server-express'
-// import Episode from './episode'
 
 export default gql`
     extend type Query {
         character(id: ID!): Character
-        characters: [Character!]!
+        characters(page: Int ): Characters!
     }
 
     extend type Mutation {
@@ -21,6 +20,11 @@ export default gql`
           episode: [String!]!
         ): Character!
     }
+
+    type Characters {
+        info: Info
+        results: [Character]!
+    }
     
     type Character {
         id: ID!
@@ -35,4 +39,6 @@ export default gql`
         episode: [Episode!]!,
         created: String
     }
+
+
 `

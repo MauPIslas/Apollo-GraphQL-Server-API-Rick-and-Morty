@@ -3,7 +3,7 @@ import { gql } from 'apollo-server-express'
 export default gql`
     extend type Query {
         location(id: ID!): Location
-        locations: [Location!]!
+        locations(page: Int): Locations
     }
 
     extend type Mutation {
@@ -15,6 +15,11 @@ export default gql`
           residents: [String],
           created: String
         ): Location!
+    }
+
+    type Locations {
+        info: Info,
+        results: [Location!]!
     }
     
     type Location {

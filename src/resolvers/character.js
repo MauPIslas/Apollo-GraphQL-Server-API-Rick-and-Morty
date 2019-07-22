@@ -4,8 +4,33 @@ import { Character } from '../models'
 
 export default {
   Query: {
-    characters: (root, args, context, info) => {
-      return Character.find({})
+    characters: async (root, { page }, context, info) => {
+      const count = await Character.countDocuments()
+      let pages = parseInt(count / 20) + 1
+      if ((count % 20) === 0) {
+        pages = count / 20
+      }
+      let prev = page - 1
+      let documents = Character.find({}).limit(20).skip((page - 1) * 20)
+      if (page === 1) {
+        prev = null
+        documents = Character.find({}).limit(20)
+      }
+      let next = page + 1
+      if (page >= pages) {
+        next = null
+      }
+      const char = {
+        info: {
+          prev: prev,
+          next: next,
+          count: count,
+          pages: pages
+
+        },
+        results: documents
+      }
+      return char
     },
     character: (root, { id }, context, info) => {
       if (!mongoose.Types.ObjectId.isValid(id)) {
