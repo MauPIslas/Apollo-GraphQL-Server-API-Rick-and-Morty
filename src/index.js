@@ -1,4 +1,5 @@
 import { ApolloServer } from 'apollo-server-express'
+import depthLimit from 'graphql-depth-limit'
 import express from 'express'
 import mongoose from 'mongoose'
 import typeDefs from './typeDefs'
@@ -13,7 +14,8 @@ import { APP_PORT, DB_HOST } from './config'
 
     const server = new ApolloServer({
       typeDefs,
-      resolvers
+      resolvers,
+      validationRules: [depthLimit(3)]
     })
 
     server.applyMiddleware({ app }) // app is from an existing express app

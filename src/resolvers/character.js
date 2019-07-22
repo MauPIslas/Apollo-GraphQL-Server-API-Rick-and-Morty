@@ -47,6 +47,12 @@ export default {
   Character: {
     episode: async (character, args, context, info) => {
       return (await character.populate('episode').execPopulate()).episode
+    },
+    origin: async (character, args, context, info) => {
+      return (await character.populate('origin').execPopulate()).origin
+    },
+    location: async (character, args, context, info) => {
+      return (await character.populate('location').execPopulate()).location
     }
   }
 }

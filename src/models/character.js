@@ -6,8 +6,14 @@ const characterSchema = new mongoose.Schema({
   species: String,
   type: String,
   gender: String,
-  origin: String,
-  location: String,
+  origin: {
+    type: Schema.Types.ObjectId,
+    ref: 'Location'
+  },
+  location: {
+    type: Schema.Types.ObjectId,
+    ref: 'Location'
+  },
   image: String,
   episode: [{
     type: Schema.Types.ObjectId,

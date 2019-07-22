@@ -33,8 +33,8 @@ export default gql`
         species: String,
         type: String,
         gender: String,
-        origin: String,
-        location: String,
+        origin: Location,
+        location: Location,
         image: String,
         episode: [Episode!]!,
         created: String
